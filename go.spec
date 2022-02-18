@@ -5,10 +5,18 @@
 %define _go_rel 1.17
 %define _go_patch 7
 
+%if (0%{?suse_version} > 0)
+Name:		go%{_go_rel}
+%else
+%if (0%{?rhel} >= 7)
+Name:		golang
+%else
 Name:		go
+%endif
+%endif
 Version:	%{_go_rel}.%{_go_patch}
-Release:	1.daos%{?dist}
-Summary:	The Go Programming Language.
+Release:	2.daos%{?dist}
+Summary:	The Go Programming Language
 
 License:	BSD and Public Domain
 URL:		http://golang.org/
@@ -19,21 +27,15 @@ Source0:	https://go.dev/dl/go%{version}.linux-amd64.tar.gz
 ExclusiveArch: x86_64
 AutoReqProv: no
 
-# el7/8
-Provides: golang-%{_fullver} = %{version} golang-src-%{_fullver} = %{version}  golang-bin-%{_fullver}  = %{version}
-Obsoletes: golang <= %{version} golang-src <= %{version} golang-bin <= %{version}
-# sles/leap
-Provides: go%{_go_rel} = %{version} go%{_go_rel}-race = %{version} go%{_go_rel}-doc = %{version}
-Provides: go-race-%{_fullver} = %{version} go-doc-%{_fullver} = %{version}
-Obsoletes: go-race < %{version} go-doc < %{version}
-Obsoletes: go%{_go_rel} <= %{version} go%{_go_rel}-race <= %{version} go%{_go_rel}-doc <= %{version}
-Obsoletes: go1.16 < %{version} go1.16-race < %{version} go1.16-doc < %{version}
-Obsoletes: go1.15 < %{version} go1.15-race < %{version} go1.15-doc < %{version}
-Obsoletes: go1.14 < %{version} go1.14-race < %{version} go1.14-doc < %{version}
-Obsoletes: go1.13 < %{version} go1.13-race < %{version} go1.13-doc < %{version}
-Obsoletes: go1.12 < %{version} go1.12-race < %{version} go1.12-doc < %{version}
-Obsoletes: go1.11 < %{version} go1.11-race < %{version} go1.11-doc < %{version}
-Obsoletes: go1.10 < %{version} go1.10-race < %{version} go1.10-doc < %{version}
+%if (0%{?rhel} > 0)
+Provides: go = %{_fullver} golang-src = %{_fullver} golang-bin = %{_fullver}
+%endif
+
+%if (0%{?suse_version} > 0)
+Provides: go%{_go_rel} = %{_fullver} go%{_go_rel}-race = %{_fullver} go%{_go_rel}-doc = %{_fullver}
+Provides: go = %{_fullver} go-race = %{_fullver} go-doc = %{_fullver}
+%endif
+Obsoletes: go < %{_fullver}
 
 %description
 Installs the precompiled Go toolchain provided at https://go.dev/dl/, replacing
@@ -57,5 +59,8 @@ cp -a src %{buildroot}/%{_exec_prefix}
 %doc
 
 %changelog
-* Fri Feb 11 2022 Michael J. MacDonald <mjmac.macdonald@intel.com>
+* Thu Feb 17 2022 Michael J. MacDonald <mjmac.macdonald@intel.com> - 1.17.7-2
+- adjust names per distro
+
+* Fri Feb 11 2022 Michael J. MacDonald <mjmac.macdonald@intel.com> - 1.17.7-1
 - initial packaging for internal builders
