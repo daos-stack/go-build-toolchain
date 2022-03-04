@@ -3,7 +3,7 @@
 %undefine _missing_build_ids_terminate_build
 
 %define _go_rel 1.17
-%define _go_patch 7
+%define _go_patch 8
 
 %if (0%{?suse_version} > 0)
 Name:		go%{_go_rel}
