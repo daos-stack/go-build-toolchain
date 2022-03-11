@@ -3,7 +3,7 @@
 %undefine _missing_build_ids_terminate_build
 
 %define _go_rel 1.17
-%define _go_patch 7
+%define _go_patch 8
 
 %if (0%{?suse_version} > 0)
 Name:		go%{_go_rel}
@@ -15,7 +15,7 @@ Name:		go
 %endif
 %endif
 Version:	%{_go_rel}.%{_go_patch}
-Release:	2.daos%{?dist}
+Release:	1.daos%{?dist}
 Summary:	The Go Programming Language
 
 License:	BSD and Public Domain
@@ -59,6 +59,9 @@ cp -a src %{buildroot}/%{_exec_prefix}
 %doc
 
 %changelog
+* Fri Mar 04 2022 David Quigley <david.quigley@intel.com> - 1.17.8-1
+- Bump the patch version to apply fixes for new CVEs
+
 * Thu Feb 17 2022 Michael J. MacDonald <mjmac.macdonald@intel.com> - 1.17.7-2
 - adjust names per distro
 

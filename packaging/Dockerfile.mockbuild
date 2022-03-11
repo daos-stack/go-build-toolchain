@@ -1,5 +1,5 @@
 #
-# Copyright 2018-2021, Intel Corporation
+# Copyright 2018-2022, Intel Corporation
 #
 # 'recipe' for Docker to build an RPM
 #
@@ -14,7 +14,7 @@ ARG UID=1000
 # Install basic tools
 RUN dnf -y install mock make \
                    rpm-build curl createrepo rpmlint redhat-lsb-core git \
-                   python-srpm-macros rpmdevtools "mock-core-configs < 37.1"
+                   python-srpm-macros rpmdevtools mock-core-configs\ \<\ 37.1
 
 # Add build user (to keep rpmbuild happy)
 ENV USER build
