@@ -2,10 +2,12 @@
 %define debug_package %{nil}
 %undefine _missing_build_ids_terminate_build
 
-%define _go_rel 1.17
-%define _go_patch 8
+%define _go_rel 1.18
+%define _go_patch 0
 
 %if (0%{?suse_version} > 0)
+# Sigh. SuSE.
+Epoch:		1
 Name:		go%{_go_rel}
 %else
 %if (0%{?rhel} >= 7)
@@ -14,7 +16,11 @@ Name:		golang
 Name:		go
 %endif
 %endif
+%if (0%{?_go_patch} > 0)
 Version:	%{_go_rel}.%{_go_patch}
+%else
+Version:	%{_go_rel}
+%endif
 Release:	1.daos%{?dist}
 Summary:	The Go Programming Language
 
@@ -59,6 +65,9 @@ cp -a src %{buildroot}/%{_exec_prefix}
 %doc
 
 %changelog
+* Thu Mar 17 2022 Michael J. MacDonald <mjmac.macdonald@intel.com> - 1.18-1
+- Update to 1.18
+
 * Fri Mar 04 2022 David Quigley <david.quigley@intel.com> - 1.17.8-1
 - Bump the patch version to apply fixes for new CVEs
 
