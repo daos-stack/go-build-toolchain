@@ -21,7 +21,7 @@ Version:	%{_go_rel}.%{_go_patch}
 %else
 Version:	%{_go_rel}
 %endif
-Release:	1.daos%{?dist}
+Release:	2.daos%{?dist}
 Summary:	The Go Programming Language
 
 License:	BSD and Public Domain
@@ -35,11 +35,13 @@ AutoReqProv: no
 
 %if (0%{?rhel} > 0)
 Provides: go = %{_fullver} golang-src = %{_fullver} golang-bin = %{_fullver}
+Obsoletes: golang-src < %{_fullver} golang-bin < %{_fullver}
 %endif
 
 %if (0%{?suse_version} > 0)
 Provides: go%{_go_rel} = %{_fullver} go%{_go_rel}-race = %{_fullver} go%{_go_rel}-doc = %{_fullver}
 Provides: go = %{_fullver} go-race = %{_fullver} go-doc = %{_fullver}
+Obsoletes: go-race < %{_fullver} go-doc < %{_fullver}
 %endif
 Obsoletes: go < %{_fullver}
 
@@ -65,6 +67,9 @@ cp -a src %{buildroot}/%{_exec_prefix}
 %doc
 
 %changelog
+* Mon Apr 18 2022 Michael J. MacDonald <mjmac.macdonald@intel.com> - 1.18-2
+- Set Obseletes: for distro-provided package names
+
 * Thu Mar 17 2022 Michael J. MacDonald <mjmac.macdonald@intel.com> - 1.18-1
 - Update to 1.18
 
