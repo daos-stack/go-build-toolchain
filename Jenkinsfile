@@ -39,7 +39,7 @@
 // To use a test branch (i.e. PR) until it lands to master
 // I.e. for testing library changes
 //@Library(value="pipeline-lib@your_branch") _
-@Library(value="pipeline-lib@bmurrell/package-building-test-daos-matrix") _
+@Library(value="pipeline-lib@bmurrell/test") _
 
 packageBuildingPipelineDAOS(['distros': ['centos7', 'el8', 'leap15'],
                              'make args': 'DISTRO_VERSION_EL8=8.5',
