@@ -43,4 +43,4 @@
 
 packageBuildingPipelineDAOS(['distros': ['centos7', 'el8', 'leap15'],
                              'make args': 'DISTRO_VERSION_EL8=8.5',
-                             'rpmlint_rpms_allow_errors': true])
+                             'rpmlint_rpms_skip': true])
