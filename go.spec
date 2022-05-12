@@ -5,9 +5,9 @@
 %define _go_rel 1.18
 %define _go_patch 1
 
-%if (0%{?suse_version} > 0)
-# Sigh. SuSE.
+# Giant hammer. sigh.
 Epoch:		1
+%if (0%{?suse_version} > 0)
 Name:		go%{_go_rel}
 %else
 %if (0%{?rhel} >= 7)
