@@ -11,7 +11,11 @@ Epoch:		1
 Name:		go%{_go_rel}
 %else
 %if (0%{?rhel} >= 7)
+%if (0%{?rhel} == 7)
 Name:		golang
+%else
+Name:           golang-bin
+%endif
 %else
 Name:		go
 %endif
