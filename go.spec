@@ -3,7 +3,7 @@
 %undefine _missing_build_ids_terminate_build
 
 %define _go_rel 1.18
-%define _go_patch 2
+%define _go_patch 3
 
 %if (0%{?suse_version} > 0)
 # Sigh. SuSE.
@@ -65,6 +65,9 @@ cp -a src %{buildroot}/%{_exec_prefix}
 %doc
 
 %changelog
+* Fri Jun 03 2022 Michael J. MacDonald <mjmac.macdonald@intel.com> - 1.18.3-1
+- Update to 1.18.3
+
 * Fri May 13 2022 Michael J. MacDonald <mjmac.macdonald@intel.com> - 1.18.2-1
 - Update to 1.18.2
 
