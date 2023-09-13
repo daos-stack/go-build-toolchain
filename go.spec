@@ -2,7 +2,7 @@
 %define debug_package %{nil}
 %undefine _missing_build_ids_terminate_build
 
-%define _go_rel 1.20.3
+%define _go_rel 1.21.1
 %define _go_patch 0
 
 %if (0%{?suse_version} > 0)
@@ -65,6 +65,9 @@ cp -a src %{buildroot}/%{_exec_prefix}
 %doc
 
 %changelog
+* Wed Sept 13 2023 Lei Huang <lei.huang@intel.com> - 1.21.1-1
+- Update to 1.21.1
+
 * Thu Apr 13 2023 Michael J. MacDonald <mjmac.macdonald@intel.com> - 1.20.3-1
 - Update to 1.20.3
 
