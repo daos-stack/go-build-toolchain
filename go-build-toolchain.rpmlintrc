@@ -1,0 +1,23 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+addFilter(r'golang.x86_64: E: zero-length')
+addFilter(r'golang.x86_64: E: version-control-internal-file')
+addFilter(r'golang.x86_64: E: uncompressed-zip')
+addFilter(r'golang.x86_64: E: unable-to-read-zip')
+addFilter(r'golang.x86_64: E: statically-linked-binary')
+addFilter(r'golang.x86_64: E: shared-library-without-dependency-information')
+addFilter(r'golang.x86_64: E: script-without-shebang')
+addFilter(r'golang.x86_64: E: non-executable-script')
+addFilter(r'golang.x86_64: E: missing-PT_GNU_STACK-section')
+addFilter(r'golang.x86_64: E: files-duplicated-waste')
+addFilter(r'golang.x86_64: E: env-script-interpreter')
+
+addFilter(r'golang.x86_64: W: unstripped-binary-or-object')
+addFilter(r'golang.x86_64: W: position-independent-executable-suggested')
+addFilter(r'golang.x86_64: W: no-manual-page-for-binary')
+addFilter(r'golang.x86_64: W: no-documentation')
+addFilter(r'golang.x86_64: W: incoherent-version-in-changelog')
+addFilter(r'golang.x86_64: W: hidden-file-or-dir')
+addFilter(r'golang.x86_64: W: files-duplicate')
+addFilter(r'golang.x86_64: W: devel-file-in-non-devel-package')
