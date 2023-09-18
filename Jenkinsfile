@@ -43,4 +43,4 @@
 packageBuildingPipelineDAOSTest(['distros': ['el8', 'el9', 'centos7', 'leap15'],
                                  'make args': 'DISTRO_VERSION_EL8=8.5',
                                  'rpmlint_rpms_allow_errors': true,
-                                 'test-tag': 'daosio -test_dfuse_daos_build_wt_il'])
+                                 'test-tag': 'pr'])
