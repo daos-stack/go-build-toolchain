@@ -40,7 +40,7 @@
 // I.e. for testing library changes
 //@Library(value="pipeline-lib@your_branch") _
 
-packageBuildingPipelineDAOSTest(['distros': ['el8', 'el9', 'centos7', 'leap15', 'ubuntu20.04'],
+packageBuildingPipelineDAOSTest(['distros': ['el8', 'el9', 'centos7', 'leap15'],
                                  'make args': 'DISTRO_VERSION_EL8=8.5',
                                  'rpmlint_rpms_allow_errors': true,
                                  'test-tag': 'pr'])
