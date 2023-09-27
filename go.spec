@@ -53,15 +53,33 @@ any older distro-provided versions.
 %build
 
 %install
+%if (0%{?suse_version} > 0)
+%{__mkdir_p} %{buildroot}/%{_exec_prefix}/bin
+%{__mkdir_p} %{buildroot}/%{_exec_prefix}/lib64/go/%{_go_rel}
+cp -a bin %{buildroot}/%{_exec_prefix}/lib64/go/%{_go_rel}/
+cp -a pkg %{buildroot}/%{_exec_prefix}/lib64/go/%{_go_rel}/
+cp -a src %{buildroot}/%{_exec_prefix}/lib64/go/%{_go_rel}/
+ln -s %{_exec_prefix}/lib64/go/%{_go_rel}/bin/go %{buildroot}/%{_exec_prefix}/bin/go
+ln -s %{_exec_prefix}/lib64/go/%{_go_rel}/bin/gofmt %{buildroot}/%{_exec_prefix}/bin/gofmt
+%else
 %{__mkdir_p} %{buildroot}/%{_exec_prefix}
 cp -a bin %{buildroot}/%{_exec_prefix}
 cp -a pkg %{buildroot}/%{_exec_prefix}
 cp -a src %{buildroot}/%{_exec_prefix}
+%endif
 
 %files
+%if (0%{?suse_version} > 0)
+%{_bindir}/*
+%{_exec_prefix}/lib64/go/%{_go_rel}/bin/*
+%{_exec_prefix}/lib64/go/%{_go_rel}/pkg/*
+%{_exec_prefix}/lib64/go/%{_go_rel}/src/*
+%else
 %{_bindir}/*
 %{_exec_prefix}/pkg/*
 %{_exec_prefix}/src/*
+%endif
+
 %doc
 
 %changelog
