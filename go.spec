@@ -85,6 +85,7 @@ cp -a src %{buildroot}/%{_exec_prefix}
 %changelog
 * Wed Sep 13 2023 Lei Huang <lei.huang@intel.com> - 1.21.1-1
 - Update to 1.21.1
+- Build for EL9
 
 * Thu Apr 13 2023 Michael J. MacDonald <mjmac.macdonald@intel.com> - 1.20.3-1
 - Update to 1.20.3
