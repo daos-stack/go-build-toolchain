@@ -90,7 +90,7 @@ fi
 %endif
 
 %changelog
-* Wed Oct 02 2023 Lei Huang <lei.huang@intel.com> - 1.21.1-1
+* Mon Oct 02 2023 Lei Huang <lei.huang@intel.com> - 1.21.1-1
 - Update to 1.21.1
 - Build for EL9
 
