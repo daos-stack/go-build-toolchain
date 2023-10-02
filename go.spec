@@ -54,13 +54,10 @@ any older distro-provided versions.
 
 %install
 %if (0%{?suse_version} > 0)
-%{__mkdir_p} %{buildroot}/%{_exec_prefix}/bin
 %{__mkdir_p} %{buildroot}/%{_exec_prefix}/lib64/go/%{_go_rel}
 cp -a bin %{buildroot}/%{_exec_prefix}/lib64/go/%{_go_rel}/
 cp -a pkg %{buildroot}/%{_exec_prefix}/lib64/go/%{_go_rel}/
 cp -a src %{buildroot}/%{_exec_prefix}/lib64/go/%{_go_rel}/
-ln -s %{_exec_prefix}/lib64/go/%{_go_rel}/bin/go %{buildroot}/%{_exec_prefix}/bin/go
-ln -s %{_exec_prefix}/lib64/go/%{_go_rel}/bin/gofmt %{buildroot}/%{_exec_prefix}/bin/gofmt
 %else
 %{__mkdir_p} %{buildroot}/%{_exec_prefix}
 cp -a bin %{buildroot}/%{_exec_prefix}
@@ -70,7 +67,6 @@ cp -a src %{buildroot}/%{_exec_prefix}
 
 %files
 %if (0%{?suse_version} > 0)
-%{_bindir}/*
 %{_exec_prefix}/lib64/go/%{_go_rel}/bin/*
 %{_exec_prefix}/lib64/go/%{_go_rel}/pkg/*
 %{_exec_prefix}/lib64/go/%{_go_rel}/src/*
@@ -82,8 +78,19 @@ cp -a src %{buildroot}/%{_exec_prefix}
 
 %doc
 
+%if (0%{?suse_version} > 0)
+%post
+update-alternatives \
+  --install /usr/bin/go go /usr/lib64/go/%{version}/bin/go $((20+$(echo %{version} | cut -d. -f2))) \
+  --slave /usr/bin/gofmt gofmt /usr/lib64/go/%{version}/bin/gofmt
+%postun
+if [ $1 -eq 0 ] ; then
+	update-alternatives --remove go /usr/lib64/go/%{version}/bin/go
+fi
+%endif
+
 %changelog
-* Wed Sep 13 2023 Lei Huang <lei.huang@intel.com> - 1.21.1-1
+* Wed Oct 02 2023 Lei Huang <lei.huang@intel.com> - 1.21.1-1
 - Update to 1.21.1
 - Build for EL9
 
