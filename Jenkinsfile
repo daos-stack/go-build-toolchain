@@ -38,9 +38,8 @@
  */
 // To use a test branch (i.e. PR) until it lands to master
 // I.e. for testing library changes
-//@Library(value="pipeline-lib@your_branch") _
+//@Library(value='pipeline-lib@your_branch') _
 
-packageBuildingPipelineDAOSTest(['distros': ['el8', 'el9', 'centos7', 'leap15'],
-                                 'make args': 'DISTRO_VERSION_EL8=8.5',
-                                 'rpmlint_rpms_allow_errors': true,
+packageBuildingPipelineDAOSTest(['distros': ['el8', 'el9', 'leap15'],
+                                 'skip-build': false,
                                  'test-tag': 'daosio'])

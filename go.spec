@@ -2,12 +2,12 @@
 %define debug_package %{nil}
 %undefine _missing_build_ids_terminate_build
 
-%define _go_rel 1.21.3
+%define _go_rel_major_minor 1.21
+%define _go_rel_bugfix 3
+%define _go_rel %{_go_rel_major_minor}.%{_go_rel_bugfix}
 %define _go_patch 0
 
 %if (0%{?suse_version} > 0)
-# Sigh. SuSE.
-Epoch:		1
 Name:		go%{_go_rel}
 %else
 %if (0%{?rhel} >= 7)
@@ -21,7 +21,7 @@ Version:	%{_go_rel}.%{_go_patch}
 %else
 Version:	%{_go_rel}
 %endif
-Release:	1.daos%{?dist}
+Release:	2.daos%{?dist}
 Summary:	The Go Programming Language
 
 License:	BSD and Public Domain
@@ -44,10 +44,14 @@ Obsoletes: go < %{_fullver} golang-src < %{_fullver} golang-bin < %{_fullver}
 %endif
 
 %if (0%{?suse_version} > 0)
-Provides: go%{_go_rel} = %{_fullver} go%{_go_rel}-race = %{_fullver} go%{_go_rel}-doc = %{_fullver}
-Provides: go = %{_fullver} go-race = %{_fullver} go-doc = %{_fullver}
+# Emulate the main go package
+Provides: go = %{version} go-devel = go%{version} go-devel-static = go%{version} go%{_go_rel_major_minor} = %{_fullver} go%{_go_rel_major_minor}(x86-64) = %{_fullver} golang(API) = %{_go_rel_major_minor}
+# Emulate the go-race sub-package
+Provides: go-race = %{version} go-%{_go_rel_major_minor}-race = %{_fullver} go-%{_go_rel_major_minor}-race(x86_64) = %{_fullver}
+# Emulate the go-doc sub-package
+Provides: go-doc = %{version} go%{_go_rel_major_minor}-doc = %{_fullver} go%{_go_rel_major_minor}-doc(x86_64) = %{_fullver}
+Obsoletes: go < %{version} go-race < %{version} go-doc < %{_fullver}
 %endif
-Obsoletes: go < %{_fullver}
 
 %description
 Installs the precompiled Go toolchain provided at https://go.dev/dl/, replacing
@@ -107,6 +111,9 @@ fi
 %endif
 
 %changelog
+* Tue Nov 07 2023 Brian J. Murrell <brian.murrell@intel.com> - 1.21.3-2
+- Fix Provides: to use only the major.minor of the go release
+
 * Mon Oct 23 2023 Lei Huang <lei.huang@intel.com> - 1.21.3-1
 - Update to 1.21.3
 - Build for EL9
