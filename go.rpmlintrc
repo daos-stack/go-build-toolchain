@@ -1,0 +1,26 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+addFilter('E: zero-length')
+addFilter('E: version-control-internal-file')
+addFilter('E: uncompressed-zip')
+addFilter('E: unable-to-read-zip')
+addFilter('E: statically-linked-binary')
+addFilter('E: shared-library-without-dependency-information')
+addFilter('E: script-without-shebang')
+addFilter('E: non-executable-script')
+addFilter('E: missing-PT_GNU_STACK-section')
+addFilter('E: files-duplicated-waste')
+addFilter('E: env-script-interpreter')
+
+addFilter('W: unstripped-binary-or-object')
+addFilter('W: position-independent-executable-suggested')
+addFilter('W: no-manual-page-for-binary')
+addFilter('W: no-documentation')
+addFilter('W: incoherent-version-in-changelog')
+addFilter('W: hidden-file-or-dir')
+addFilter('W: files-duplicate')
+addFilter('W: devel-file-in-non-devel-package')
+addFilter('E: invalid-spec-name')
+addFilter('E: bad-crc-in-zip gophercolor16x16.png /usr/src/archive/zip/testdata/test-badbase.zip')
+addFilter('E: ar-failed')
