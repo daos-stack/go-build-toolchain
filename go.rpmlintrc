@@ -21,9 +21,6 @@ addFilter('W: incoherent-version-in-changelog')
 addFilter('W: hidden-file-or-dir')
 addFilter('W: files-duplicate')
 addFilter('W: devel-file-in-non-devel-package')
-<<<<<<< HEAD
-=======
 addFilter('E: invalid-spec-name')
 addFilter('E: bad-crc-in-zip gophercolor16x16.png /usr/src/archive/zip/testdata/test-badbase.zip')
 addFilter('E: ar-failed')
->>>>>>> master
