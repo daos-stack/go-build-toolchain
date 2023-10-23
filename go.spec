@@ -2,7 +2,7 @@
 %define debug_package %{nil}
 %undefine _missing_build_ids_terminate_build
 
-%define _go_rel 1.21.1
+%define _go_rel 1.21.3
 %define _go_patch 0
 
 %if (0%{?suse_version} > 0)
@@ -21,7 +21,7 @@ Version:	%{_go_rel}.%{_go_patch}
 %else
 Version:	%{_go_rel}
 %endif
-Release:	1.daos%{?dist}
+Release:	2.daos%{?dist}
 Summary:	The Go Programming Language
 
 License:	BSD and Public Domain
@@ -35,6 +35,7 @@ AutoReqProv: no
 
 %if (0%{?rhel} > 0)
 Provides: go = %{_fullver} golang-src = %{_fullver} golang-bin = %{_fullver}
+Obsoletes: go < %{_fullver} golang-src < %{_fullver} golang-bin < %{_fullver}
 %endif
 
 %if (0%{?suse_version} > 0)
@@ -90,9 +91,12 @@ fi
 %endif
 
 %changelog
-* Mon Oct 02 2023 Lei Huang <lei.huang@intel.com> - 1.21.1-1
-- Update to 1.21.1
+* Mon Oct 23 2023 Lei Huang <lei.huang@intel.com> - 1.21.3-1
+- Update to 1.21.3
 - Build for EL9
+
+* Tue Oct 17 2023 Brian J. Murrell <brian.murrell@intel.com> - 1.20.3-2
+- Add Obsoletes: for the EL subpackages
 
 * Thu Apr 13 2023 Michael J. MacDonald <mjmac.macdonald@intel.com> - 1.20.3-1
 - Update to 1.20.3
