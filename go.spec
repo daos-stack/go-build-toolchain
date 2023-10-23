@@ -21,7 +21,7 @@ Version:	%{_go_rel}.%{_go_patch}
 %else
 Version:	%{_go_rel}
 %endif
-Release:	2.daos%{?dist}
+Release:	1.daos%{?dist}
 Summary:	The Go Programming Language
 
 License:	BSD and Public Domain
