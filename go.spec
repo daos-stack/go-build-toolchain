@@ -33,6 +33,11 @@ Source0:	https://go.dev/dl/go%{version}.linux-amd64.tar.gz
 ExclusiveArch: x86_64
 AutoReqProv: no
 
+%if (0%{?suse_version} > 0)
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+%endif
+
 %if (0%{?rhel} > 0)
 Provides: go = %{_fullver} golang-src = %{_fullver} golang-bin = %{_fullver}
 Obsoletes: go < %{_fullver} golang-src < %{_fullver} golang-bin < %{_fullver}
@@ -55,6 +60,12 @@ any older distro-provided versions.
 
 %install
 %if (0%{?suse_version} > 0)
+# update-alternatives
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+mkdir -p %{buildroot}%{_bindir}
+touch %{buildroot}%{_sysconfdir}/alternatives/{go,gofmt}
+ln -sf %{_sysconfdir}/alternatives/go %{buildroot}%{_bindir}/go
+ln -sf %{_sysconfdir}/alternatives/gofmt %{buildroot}%{_bindir}/gofmt
 %{__mkdir_p} %{buildroot}/%{_exec_prefix}/lib64/go/%{_go_rel}
 cp -a bin %{buildroot}/%{_exec_prefix}/lib64/go/%{_go_rel}/
 cp -a pkg %{buildroot}/%{_exec_prefix}/lib64/go/%{_go_rel}/
@@ -82,11 +93,11 @@ cp -a src %{buildroot}/%{_exec_prefix}
 %if (0%{?suse_version} > 0)
 %post
 update-alternatives \
-  --install /usr/bin/go go /usr/lib64/go/%{version}/bin/go $((20+$(echo %{version} | cut -d. -f2))) \
-  --slave /usr/bin/gofmt gofmt /usr/lib64/go/%{version}/bin/gofmt
+  --install %{_bindir}/go go %{_libdir}/go/%{version}/bin/go $((20+$(echo %{version} | cut -d. -f2))) \
+  --slave %{_bindir}/gofmt gofmt %{_libdir}/go/%{version}/bin/gofmt
 %postun
 if [ $1 -eq 0 ] ; then
-	update-alternatives --remove go /usr/lib64/go/%{version}/bin/go
+	update-alternatives --remove go %{_libdir}/go/%{version}/bin/go
 fi
 %endif
 
