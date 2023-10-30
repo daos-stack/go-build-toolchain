@@ -82,6 +82,11 @@ cp -a src %{buildroot}/%{_exec_prefix}
 %{_exec_prefix}/lib64/go/%{_go_rel}/bin/*
 %{_exec_prefix}/lib64/go/%{_go_rel}/pkg/*
 %{_exec_prefix}/lib64/go/%{_go_rel}/src/*
+%{_bindir}/go
+%{_bindir}/gofmt
+%{_sysconfdir}/alternatives/go
+%{_sysconfdir}/alternatives/gofmt
+
 %else
 %{_bindir}/*
 %{_exec_prefix}/pkg/*
