@@ -2,7 +2,7 @@
 %define debug_package %{nil}
 %undefine _missing_build_ids_terminate_build
 
-%define _go_rel 1.20.3
+%define _go_rel 1.21.3
 %define _go_patch 0
 
 %if (0%{?suse_version} > 0)
@@ -21,7 +21,7 @@ Version:	%{_go_rel}.%{_go_patch}
 %else
 Version:	%{_go_rel}
 %endif
-Release:	2.daos%{?dist}
+Release:	1.daos%{?dist}
 Summary:	The Go Programming Language
 
 License:	BSD and Public Domain
@@ -32,6 +32,11 @@ Source0:	https://go.dev/dl/go%{version}.linux-amd64.tar.gz
 
 ExclusiveArch: x86_64
 AutoReqProv: no
+
+%if (0%{?suse_version} > 0)
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+%endif
 
 %if (0%{?rhel} > 0)
 Provides: go = %{_fullver} golang-src = %{_fullver} golang-bin = %{_fullver}
@@ -54,18 +59,58 @@ any older distro-provided versions.
 %build
 
 %install
+%if (0%{?suse_version} > 0)
+# update-alternatives
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+mkdir -p %{buildroot}%{_bindir}
+touch %{buildroot}%{_sysconfdir}/alternatives/{go,gofmt}
+ln -sf %{_sysconfdir}/alternatives/go %{buildroot}%{_bindir}/go
+ln -sf %{_sysconfdir}/alternatives/gofmt %{buildroot}%{_bindir}/gofmt
+%{__mkdir_p} %{buildroot}/%{_exec_prefix}/lib64/go/%{_go_rel}
+cp -a bin %{buildroot}/%{_exec_prefix}/lib64/go/%{_go_rel}/
+cp -a pkg %{buildroot}/%{_exec_prefix}/lib64/go/%{_go_rel}/
+cp -a src %{buildroot}/%{_exec_prefix}/lib64/go/%{_go_rel}/
+%else
 %{__mkdir_p} %{buildroot}/%{_exec_prefix}
 cp -a bin %{buildroot}/%{_exec_prefix}
 cp -a pkg %{buildroot}/%{_exec_prefix}
 cp -a src %{buildroot}/%{_exec_prefix}
+%endif
 
 %files
+%if (0%{?suse_version} > 0)
+%{_exec_prefix}/lib64/go/%{_go_rel}/bin/*
+%{_exec_prefix}/lib64/go/%{_go_rel}/pkg/*
+%{_exec_prefix}/lib64/go/%{_go_rel}/src/*
+%{_bindir}/go
+%{_bindir}/gofmt
+%ghost %{_sysconfdir}/alternatives/go
+%ghost %{_sysconfdir}/alternatives/gofmt
+
+%else
 %{_bindir}/*
 %{_exec_prefix}/pkg/*
 %{_exec_prefix}/src/*
+%endif
+
 %doc
 
+%if (0%{?suse_version} > 0)
+%post
+update-alternatives \
+  --install %{_bindir}/go go %{_libdir}/go/%{version}/bin/go $((20+$(echo %{version} | cut -d. -f2))) \
+  --slave %{_bindir}/gofmt gofmt %{_libdir}/go/%{version}/bin/gofmt
+%postun
+if [ $1 -eq 0 ] ; then
+	update-alternatives --remove go %{_libdir}/go/%{version}/bin/go
+fi
+%endif
+
 %changelog
+* Mon Oct 23 2023 Lei Huang <lei.huang@intel.com> - 1.21.3-1
+- Update to 1.21.3
+- Build for EL9
+
 * Tue Oct 17 2023 Brian J. Murrell <brian.murrell@intel.com> - 1.20.3-2
 - Add Obsoletes: for the EL subpackages
 

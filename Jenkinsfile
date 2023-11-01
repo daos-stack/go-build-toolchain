@@ -40,6 +40,7 @@
 // I.e. for testing library changes
 //@Library(value="pipeline-lib@your_branch") _
 
-packageBuildingPipelineDAOS(['distros': ['el8', 'el9', 'leap15'],
-                             'make args': 'DISTRO_VERSION_EL8=8.5',
-                             'rpmlint_rpms_allow_errors': true])
+packageBuildingPipelineDAOSTest(['distros': ['el8', 'el9', 'centos7', 'leap15'],
+                                 'make args': 'DISTRO_VERSION_EL8=8.5',
+                                 'rpmlint_rpms_allow_errors': true,
+                                 'test-tag': 'daosio'])
