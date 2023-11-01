@@ -13,7 +13,6 @@ addFilter('E: missing-PT_GNU_STACK-section')
 addFilter('E: files-duplicated-waste')
 addFilter('E: env-script-interpreter')
 
-addFilter('W: non-conffile-in-etc')
 addFilter('W: unstripped-binary-or-object')
 addFilter('W: position-independent-executable-suggested')
 addFilter('W: no-manual-page-for-binary')
