@@ -3,7 +3,7 @@
 %undefine _missing_build_ids_terminate_build
 
 %define _go_rel_major_minor 1.21
-%define _go_rel_bugfix 3
+%define _go_rel_bugfix 4
 %define _go_rel %{_go_rel_major_minor}.%{_go_rel_bugfix}
 %define _go_patch 0
 
