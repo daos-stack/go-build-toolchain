@@ -21,7 +21,7 @@ Version:	%{_go_rel}.%{_go_patch}
 %else
 Version:	%{_go_rel}
 %endif
-Release:	2.daos%{?dist}
+Release:	1.daos%{?dist}
 Summary:	The Go Programming Language
 
 License:	BSD and Public Domain
@@ -111,6 +111,9 @@ fi
 %endif
 
 %changelog
+* Wed Nov 22 2023 Ryon Jensen <ryon.jensen@intel.com> - 1.21.4-1
+- Update to 1.21.4
+
 * Tue Nov 07 2023 Brian J. Murrell <brian.murrell@intel.com> - 1.21.3-2
 - Fix Provides: to use only the major.minor of the go release
 
