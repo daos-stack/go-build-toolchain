@@ -111,8 +111,8 @@ fi
 %endif
 
 %changelog
-* Wed Nov 22 2023 Ryon Jensen <ryon.jensen@intel.com> - 1.21.4-1
-- Update to 1.21.4
+* Fri Dec 08 2023 Ryon Jensen <ryon.jensen@intel.com> - 1.21.4-1
+- Update to version 1.21.4
 
 * Tue Nov 07 2023 Brian J. Murrell <brian.murrell@intel.com> - 1.21.3-2
 - Fix Provides: to use only the major.minor of the go release
