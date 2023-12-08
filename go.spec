@@ -3,7 +3,7 @@
 %undefine _missing_build_ids_terminate_build
 
 %define _go_rel_major_minor 1.21
-%define _go_rel_bugfix 3
+%define _go_rel_bugfix 4
 %define _go_rel %{_go_rel_major_minor}.%{_go_rel_bugfix}
 %define _go_patch 0
 
@@ -21,7 +21,7 @@ Version:	%{_go_rel}.%{_go_patch}
 %else
 Version:	%{_go_rel}
 %endif
-Release:	2.daos%{?dist}
+Release:	1.daos%{?dist}
 Summary:	The Go Programming Language
 
 License:	BSD and Public Domain
@@ -111,6 +111,9 @@ fi
 %endif
 
 %changelog
+* Fri Dec 08 2023 Ryon Jensen <ryon.jensen@intel.com> - 1.21.4-1
+- Update to version 1.21.4
+
 * Tue Nov 07 2023 Brian J. Murrell <brian.murrell@intel.com> - 1.21.3-2
 - Fix Provides: to use only the major.minor of the go release
 
