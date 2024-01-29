@@ -3,7 +3,7 @@
 %undefine _missing_build_ids_terminate_build
 
 %define _go_rel_major_minor 1.21
-%define _go_rel_bugfix 4
+%define _go_rel_bugfix 6
 %define _go_rel %{_go_rel_major_minor}.%{_go_rel_bugfix}
 %define _go_patch 0
 
@@ -111,6 +111,9 @@ fi
 %endif
 
 %changelog
+* Thu Jan 18 2024 Tomasz Gromadzki <tomasz.gromadzki@intel.com> - 1.21.6-1
+- Update to version 1.21.6
+
 * Fri Dec 08 2023 Ryon Jensen <ryon.jensen@intel.com> - 1.21.4-1
 - Update to version 1.21.4
 
