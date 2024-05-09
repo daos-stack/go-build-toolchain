@@ -111,6 +111,9 @@ fi
 %endif
 
 %changelog
+* Thu Jan 18 2024 Tomasz Gromadzki <tomasz.gromadzki@intel.com> - 1.22.3-1
+- Update to version 1.22.3
+
 * Thu Jan 18 2024 Tomasz Gromadzki <tomasz.gromadzki@intel.com> - 1.21.6-1
 - Update to version 1.21.6
 
