@@ -41,5 +41,4 @@
 //@Library(value='pipeline-lib@your_branch') _
 
 packageBuildingPipelineDAOSTest(['distros': ['el8', 'el9', 'leap15'],
-                                 'skip-build': false,
                                  'test-tag': 'daosio'])
