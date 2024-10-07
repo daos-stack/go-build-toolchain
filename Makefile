@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: BSD-2-Clause-Patent
+# Copyright (c) 2022-2024 Intel Corporation
+
 NAME	:= go
 SRC_EXT	:= gz
 
