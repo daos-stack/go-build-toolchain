@@ -111,10 +111,10 @@ fi
 %endif
 
 %changelog
-* Thu Mar 13 2025 Tomasz Gromadzki <tomasz.gromadzki@intel.com> - 1.22.7-1
+* Thu Mar 13 2025 Tomasz Gromadzki <tomasz.gromadzki@intel.com> - 1.23.7-1
 - Update to version 1.23.7
 
-* Fri Jul 27 2024 Tomasz Gromadzki <tomasz.gromadzki@intel.com> - 1.22.5-1
+* Fri Jul 26 2024 Tomasz Gromadzki <tomasz.gromadzki@intel.com> - 1.22.5-1
 - Update to version 1.22.5
 
 * Fri Jun 21 2024 Tomasz Gromadzki <tomasz.gromadzki@intel.com> - 1.22.4-1
