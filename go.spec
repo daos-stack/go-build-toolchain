@@ -2,8 +2,8 @@
 %define debug_package %{nil}
 %undefine _missing_build_ids_terminate_build
 
-%define _go_rel_major_minor 1.22
-%define _go_rel_bugfix 5
+%define _go_rel_major_minor 1.23
+%define _go_rel_bugfix 7
 %define _go_rel %{_go_rel_major_minor}.%{_go_rel_bugfix}
 %define _go_patch 0
 
@@ -111,7 +111,10 @@ fi
 %endif
 
 %changelog
-* Fri Jul 27 2024 Tomasz Gromadzki <tomasz.gromadzki@intel.com> - 1.22.5-1
+* Tue Apr 08 2025 Tomasz Gromadzki <tomasz.gromadzki@intel.com> - 1.23.7-1
+- Update to version 1.23.7
+
+* Fri Jul 26 2024 Tomasz Gromadzki <tomasz.gromadzki@intel.com> - 1.22.5-1
 - Update to version 1.22.5
 
 * Fri Jun 21 2024 Tomasz Gromadzki <tomasz.gromadzki@intel.com> - 1.22.4-1
