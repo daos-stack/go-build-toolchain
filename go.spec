@@ -2,8 +2,8 @@
 %define debug_package %{nil}
 %undefine _missing_build_ids_terminate_build
 
-%define _go_rel_major_minor 1.23
-%define _go_rel_bugfix 7
+%define _go_rel_major_minor 1.25
+%define _go_rel_bugfix 8
 %define _go_rel %{_go_rel_major_minor}.%{_go_rel_bugfix}
 %define _go_patch 0
 
@@ -111,6 +111,9 @@ fi
 %endif
 
 %changelog
+* Wed Apr 22 2026 Ryon Jensen <ryon.jensen@intel.com> - 1.25.8-1
+- Update to version 1.25.8
+
 * Tue Apr 08 2025 Tomasz Gromadzki <tomasz.gromadzki@intel.com> - 1.23.7-1
 - Update to version 1.23.7
 
