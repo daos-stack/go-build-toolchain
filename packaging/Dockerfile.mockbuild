@@ -36,7 +36,7 @@ RUN chmod +x /tmp/repo-helper.sh &&                 \
 
 # Install basic tools
 RUN dnf -y install mock make                                        \
-                   rpm-build createrepo rpmlint redhat-lsb-core git \
+                   rpm-build createrepo rpmlint git \
                    python-srpm-macros rpmdevtools &&                \
     dnf -y clean all
 
