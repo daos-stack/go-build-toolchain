@@ -111,10 +111,10 @@ fi
 %endif
 
 %changelog
-* Wed Apr 22 2026 Ryon Jensen <ryon.jensen@intel.com> - 1.25.8-1
+* Wed Apr 22 2026 Ryon Jensen <ryon.jensen@hpe.com> - 1.25.8-1
 - Update to version 1.25.8
 
-* Tue Apr 08 2025 Tomasz Gromadzki <tomasz.gromadzki@intel.com> - 1.23.7-1
+* Tue Apr 08 2025 Tomasz Gromadzki <tomasz.gromadzki@hpe.com> - 1.23.7-1
 - Update to version 1.23.7
 
 * Fri Jul 26 2024 Tomasz Gromadzki <tomasz.gromadzki@intel.com> - 1.22.5-1
