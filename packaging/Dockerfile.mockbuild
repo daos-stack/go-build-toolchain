@@ -17,7 +17,6 @@ ARG DAOS_NO_PROXY
 ARG DAOS_HTTP_PROXY
 ARG DAOS_HTTPS_PROXY
 
-# Accept DAOS_NO_PROXY at build time
 # Propagate into the build environment
 ENV http_proxy=${DAOS_HTTP_PROXY} \
     HTTP_PROXY=${DAOS_HTTP_PROXY} \
@@ -26,7 +25,7 @@ ENV http_proxy=${DAOS_HTTP_PROXY} \
     no_proxy=${DAOS_NO_PROXY} \
     NO_PROXY=${DAOS_NO_PROXY}
 
-    # Persist into /etc/environment for use by shells and services
+# Persist into /etc/environment for use by shells and services
 RUN set -e; \
     if [ -n "$DAOS_HTTP_PROXY" ]; then \
         echo "http_proxy=$DAOS_HTTP_PROXY" >> /etc/environment; \
