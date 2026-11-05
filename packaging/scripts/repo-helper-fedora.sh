@@ -83,6 +83,11 @@ if [ -n "$REPO_FILE_URL" ]; then
     if is_fedora_eol; then
         archive="-archive"
     fi
+    # DNF5 also loads vendor repositories outside /etc/yum.repos.d.
+    if [[ -d /etc/dnf/libdnf5.conf.d ]]; then
+        printf '[main]\nreposdir=/etc/yum.repos.d\n' \
+            > /etc/dnf/libdnf5.conf.d/99-daos-repos.conf
+    fi
     mkdir -p /etc/yum.repos.d
     pushd /etc/yum.repos.d/
     curl -k -sSf                                  \
