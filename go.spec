@@ -2,8 +2,8 @@
 %define debug_package %{nil}
 %undefine _missing_build_ids_terminate_build
 
-%define _go_rel_major_minor 1.25
-%define _go_rel_bugfix 8
+%define _go_rel_major_minor 1.26
+%define _go_rel_bugfix 10
 %define _go_rel %{_go_rel_major_minor}.%{_go_rel_bugfix}
 %define _go_patch 0
 
@@ -111,6 +111,9 @@ fi
 %endif
 
 %changelog
+* Thu Oct 22 2026 Ryon Jensen <ryon.jensen@hpe.com> - 1.26.10-1
+- Update to version 1.26.10
+
 * Wed Apr 22 2026 Ryon Jensen <ryon.jensen@hpe.com> - 1.25.8-1
 - Update to version 1.25.8
 
